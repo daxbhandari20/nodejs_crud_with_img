@@ -53,7 +53,6 @@ exports.getUserById = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-  const _id = req.params.id;
   User.findById(req.params.id, (err, data) => {
     if (data != null) {
       const user = {
@@ -62,7 +61,7 @@ exports.updateUser = (req, res) => {
         address: req.body.address,
         file: req.file.filename,
       };
-      User.findByIdAndUpdate(_id, user, (err, data) => {
+      User.findByIdAndUpdate(req.params.id, user, (err, data) => {
         if (err) {
           console.log("err ============", err);
           res.status(500).send({ message: "Error updating user", error: err });

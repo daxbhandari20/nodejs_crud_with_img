@@ -7,7 +7,6 @@ var userController = require("../controllers/userController");
 const upload = multer({
     storage: multer.diskStorage({
         destination: function (req, res, cb) {
-            console.log("__dirname =========== ", __dirname + "/public/uploads");
             cb(null, __dirname + "/../public/uploads");
         },
         filename: function (req, file, cb) {
